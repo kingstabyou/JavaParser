@@ -9,5 +9,8 @@
         <module name="JavaParser" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JavaParser" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
