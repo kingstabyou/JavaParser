@@ -42,31 +42,32 @@ public class ClassParser {
             child_list.add(class_info.getNameAsString());
         }
         Set<String> result=new HashSet<>();
-        if (class_info.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
-            String resultfromextended= get_extended_method(classes,class_info,methodName,argumentTypes);
-            if (!resultfromextended.isEmpty()){
-                if (return_result[0].equals("abstract") || return_result[0].equals("private") || return_result[0].equals("static") ){
-                    return result;
-                }
-                else {
-                    result.add(return_result[1]);
-                }
-            }
-        }
-        else {
-            check_Abstract_Static_Private(class_info, methodName, argumentTypes);
-            switch (return_result[0]) {
-                case "abstract":
-                    return result;
-                case "private":
-                case "static":
-                    result.add(return_result[1]);
-                    return result;
-                default:
-                    result.add(return_result[1]);
 
-            }
-        }
+//        if (class_info.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
+//            String resultfromextended= get_extended_method(classes,class_info,methodName,argumentTypes);
+//            if (!resultfromextended.isEmpty()){
+//                if (return_result[0].equals("abstract") || return_result[0].equals("private") || return_result[0].equals("static") ){
+//                    return result;
+//                }
+//                else {
+//                    result.add(return_result[1]);
+//                }
+//            }
+//        }
+//        else {
+//            check_Abstract_Static_Private(class_info, methodName, argumentTypes);
+//            switch (return_result[0]) {
+//                case "abstract":
+//                    return result;
+//                case "private":
+//                case "static":
+//                    result.add(return_result[1]);
+//                    return result;
+//                default:
+//                    result.add(return_result[1]);
+//
+//            }
+//        }
 
         for(String class_fromclass:classes.keySet()){
             ClassOrInterfaceDeclaration temp_class = classes.get(class_fromclass);
@@ -104,26 +105,26 @@ public class ClassParser {
         return result;
     }
 
-    public String get_extended_method(Map<String, ClassOrInterfaceDeclaration> classes,ClassOrInterfaceDeclaration class_info,String methodName,String... argumentTypes){
-        if (!class_info.getExtendedTypes().isEmpty()){
-            ClassOrInterfaceType extendedclass= class_info.getExtendedTypes(0);
-            if (extendedclass.getNameAsString().equals("Object")){
-                temp_extended = classes.get("java.lang.Object");
-            }
-            else {
-                temp_extended = classes.get(extendedclass.getNameAsString());
-            }
-
-            if (!temp_extended.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
-                check_Abstract_Static_Private(temp_extended,methodName,argumentTypes);
-                return temp_extended.getNameAsString();
-            }
-            else {
-                return get_extended_method(classes,temp_extended,methodName,argumentTypes);
-            }
-        }
-        return empty;
-    }
+//    public String get_extended_method(Map<String, ClassOrInterfaceDeclaration> classes,ClassOrInterfaceDeclaration class_info,String methodName,String... argumentTypes){
+//        if (!class_info.getExtendedTypes().isEmpty()){
+//            ClassOrInterfaceType extendedclass= class_info.getExtendedTypes(0);
+//            if (extendedclass.getNameAsString().equals("Object")){
+//                temp_extended = classes.get("java.lang.Object");
+//            }
+//            else {
+//                temp_extended = classes.get(extendedclass.getNameAsString());
+//            }
+//
+//            if (!temp_extended.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
+//                check_Abstract_Static_Private(temp_extended,methodName,argumentTypes);
+//                return temp_extended.getNameAsString();
+//            }
+//            else {
+//                return get_extended_method(classes,temp_extended,methodName,argumentTypes);
+//            }
+//        }
+//        return empty;
+//    }
 
     public String[] check_Abstract_Static_Private(ClassOrInterfaceDeclaration class_info, String methodName, String... argumentTypes){
         if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isAbstract()){
