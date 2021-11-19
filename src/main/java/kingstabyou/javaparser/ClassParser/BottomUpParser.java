@@ -31,6 +31,7 @@ public class BottomUpParser extends ClassParser {
             if (!resultfromextended.isEmpty()){
                 if (return_result[0].equals("abstract") || return_result[0].equals("private") || return_result[0].equals("static") ){
 //                    return result;
+                    returnFlag=true;
                 }
                 else {
                     result.add(return_result[1]);
@@ -42,13 +43,14 @@ public class BottomUpParser extends ClassParser {
             switch (return_result[0]) {
                 case "abstract":
 //                    return result;
+                    returnFlag=true;
                 case "private":
                 case "static":
                     result.add(return_result[1]);
 //                    return result;
+                    returnFlag=true;
                 default:
                     result.add(return_result[1]);
-
             }
         }
     }
@@ -71,4 +73,30 @@ public class BottomUpParser extends ClassParser {
         }
         return empty;
     }
+
+    public String[] check_Abstract_Static_Private(ClassOrInterfaceDeclaration class_info, String methodName, String... argumentTypes){
+        if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isAbstract()){
+            return_result[0]="abstract";
+            return_result[1]="";
+            return return_result;
+        }
+        else if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isPrivate()){
+            return_result[0]="private";
+            return_result[1]=class_info.getNameAsString();
+            return return_result;
+        }
+        else if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isStatic()){
+            return_result[0]="static";
+            return_result[1]=class_info.getNameAsString();
+            return return_result;
+        }
+        else{
+            return_result[0]="";
+            return_result[1]=class_info.getNameAsString();
+            return return_result;
+        }
+    }
+
+
+
 }

@@ -43,6 +43,18 @@ public class ClassParser {
         }
         Set<String> result=new HashSet<>();
 
+        BottomUpParser upParser=new BottomUpParser(class_info,classes,receiverType,methodName,argumentTypes,result);
+        upParser.evaluate();
+
+        if (upParser.returnFlag){
+            return upParser.result;
+        }
+//        result=upParser.result;
+        TopDownParser downParser = new TopDownParser(class_info,classes,receiverType,methodName,argumentTypes,result,child_list);
+        downParser.evaluate();
+        result.addAll(upParser.result);
+        result.addAll(downParser.result);
+
 //        if (class_info.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
 //            String resultfromextended= get_extended_method(classes,class_info,methodName,argumentTypes);
 //            if (!resultfromextended.isEmpty()){
@@ -68,37 +80,36 @@ public class ClassParser {
 //
 //            }
 //        }
-
-        for(String class_fromclass:classes.keySet()){
-            ClassOrInterfaceDeclaration temp_class = classes.get(class_fromclass);
-            if (!temp_class.getExtendedTypes().isEmpty()){
-                ClassOrInterfaceType extendedclass= temp_class.getExtendedTypes(0);
-                if (extendedclass.getNameAsString().equals(receiverType) || child_list.contains(extendedclass.getNameAsString())){
-                    temp_extended = classes.get(class_fromclass);
-                    child_list.add(temp_extended.getNameAsString());
-                    if (!temp_extended.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
-                        result.add(temp_extended.getNameAsString());
-                    }
-                }
-                else {
-
-                    while (!temp_class.getExtendedTypes().isEmpty()){
-                        extendedclass= temp_class.getExtendedTypes(0);
-                        if (child_list.contains(extendedclass.getNameAsString())){
-                            temp_extended = classes.get(class_fromclass);
-                            child_list.add(temp_extended.getNameAsString());
-                            if (!temp_extended.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
-                                result.add(temp_extended.getNameAsString());
-                            }
-                        }
-                        if (extendedclass.getNameAsString().equals("Object")){
-                            break;
-                        }
-                        temp_class=classes.get(extendedclass.getNameAsString());
-                    }
-                }
-            }
-        }
+//        for(String class_fromclass:classes.keySet()){
+//            ClassOrInterfaceDeclaration temp_class = classes.get(class_fromclass);
+//            if (!temp_class.getExtendedTypes().isEmpty()){
+//                ClassOrInterfaceType extendedclass= temp_class.getExtendedTypes(0);
+//                if (extendedclass.getNameAsString().equals(receiverType) || child_list.contains(extendedclass.getNameAsString())){
+//                    temp_extended = classes.get(class_fromclass);
+//                    child_list.add(temp_extended.getNameAsString());
+//                    if (!temp_extended.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
+//                        result.add(temp_extended.getNameAsString());
+//                    }
+//                }
+//                else {
+//
+//                    while (!temp_class.getExtendedTypes().isEmpty()){
+//                        extendedclass= temp_class.getExtendedTypes(0);
+//                        if (child_list.contains(extendedclass.getNameAsString())){
+//                            temp_extended = classes.get(class_fromclass);
+//                            child_list.add(temp_extended.getNameAsString());
+//                            if (!temp_extended.getMethodsBySignature(methodName,argumentTypes).isEmpty()){
+//                                result.add(temp_extended.getNameAsString());
+//                            }
+//                        }
+//                        if (extendedclass.getNameAsString().equals("Object")){
+//                            break;
+//                        }
+//                        temp_class=classes.get(extendedclass.getNameAsString());
+//                    }
+//                }
+//            }
+//        }
         if (receiverType.equals("java.lang.Object") && methodName.equals("hashCode")){
             result.remove("java.lang.Object");
         }
@@ -125,30 +136,5 @@ public class ClassParser {
 //        }
 //        return empty;
 //    }
-
-    public String[] check_Abstract_Static_Private(ClassOrInterfaceDeclaration class_info, String methodName, String... argumentTypes){
-        if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isAbstract()){
-            return_result[0]="abstract";
-            return_result[1]="";
-            return return_result;
-        }
-        else if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isPrivate()){
-            return_result[0]="private";
-            return_result[1]=class_info.getNameAsString();
-            return return_result;
-        }
-        else if (class_info.getMethodsBySignature(methodName,argumentTypes).get(0).isStatic()){
-            return_result[0]="static";
-            return_result[1]=class_info.getNameAsString();
-            return return_result;
-        }
-        else{
-            return_result[0]="";
-            return_result[1]=class_info.getNameAsString();
-            return return_result;
-        }
-    }
-
-
 }
 

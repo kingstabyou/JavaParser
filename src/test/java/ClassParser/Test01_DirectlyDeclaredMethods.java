@@ -23,9 +23,6 @@ public class Test01_DirectlyDeclaredMethods {
             Set<String> result = main.explain("B", "methodB");
             Assert.assertEquals(Set.of("B"), result);
         }
-        {
-            main.parseFull();
-        }
     }
 
     @Test
