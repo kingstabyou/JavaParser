@@ -59,14 +59,14 @@ public class Main {
 
     public Map<String, ClassOrInterfaceDeclaration> getClasses() {
         if (!new Exception().getStackTrace()[1].getClassName().startsWith("ClassParser.Test"))
-            throw new Error("Calling getClasses is not allowed in student code");
+            throw new Error("Calling getClasses is not allowed in code");
         return this.classes;
     }
 
 
     public void setClasses(Map<String, ClassOrInterfaceDeclaration> classes) {
         if (!new Exception().getStackTrace()[1].getClassName().startsWith("ClassParser.Test"))
-            throw new Error("Calling getClasses is not allowed in student code");
+            throw new Error("Calling getClasses is not allowed in code");
         this.classes = classes;
     }
 
