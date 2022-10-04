@@ -14,7 +14,8 @@ public class Test04_PrivateFields {
 
     @Test
     public void testNotVisibleFields() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         for (int count = 0 ; count < 1_000 ; count++) {

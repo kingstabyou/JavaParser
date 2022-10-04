@@ -12,7 +12,8 @@ public class Test02_PublicInheritedField {
 
     @Test
     public void testHasConstDeclaredString() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Object obj = new B();
         Map<String, String> result = inspector.describeObject(obj);
@@ -23,7 +24,8 @@ public class Test02_PublicInheritedField {
 
     @Test
     public void testHasRandomDeclaredString() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         B obj = new B();
         String randomString = generateRandomString();
@@ -36,7 +38,8 @@ public class Test02_PublicInheritedField {
 
     @Test
     public void testHasConstInheritedString() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Object obj = new B();
         Map<String, String> result = inspector.describeObject(obj);
@@ -47,7 +50,8 @@ public class Test02_PublicInheritedField {
 
     @Test
     public void testHasRandomInheritedString() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         B obj = new B();
         String randomString = generateRandomString();
@@ -60,7 +64,8 @@ public class Test02_PublicInheritedField {
 
     @Test
     public void testAllConst() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Object obj = new G();
         Map<String, String> result = inspector.describeObject(obj);
@@ -79,8 +84,8 @@ public class Test02_PublicInheritedField {
 
     @Test
     public void testAllRandom() {
-        ObjectInspector inspector = Main.getInspector();
-
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         G obj = new G();
 
         String a = generateRandomString();

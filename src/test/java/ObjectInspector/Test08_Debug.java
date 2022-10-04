@@ -13,7 +13,8 @@ public class Test08_Debug {
 
     @Test
     public void testDebugMethodCalled() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         String s = generateRandomString();
         A a = new A();
@@ -26,7 +27,8 @@ public class Test08_Debug {
 
     @Test
     public void testStaticDebugMethodCalled() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         String s = generateRandomString();
         B b = new B();
@@ -39,7 +41,8 @@ public class Test08_Debug {
 
     @Test
     public void testCorrectStaticDebugMethodCalled() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(new Holder(new C()));
 
@@ -48,7 +51,8 @@ public class Test08_Debug {
 
     @Test
     public void testCheckedException() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(new Holder(new D()));
 
@@ -57,7 +61,8 @@ public class Test08_Debug {
 
     @Test
     public void testRuntimeException() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(new Holder(new E()));
 
@@ -66,7 +71,8 @@ public class Test08_Debug {
 
     @Test
     public void testReflectiveOperationException() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(new Holder(new F()));
 

@@ -13,7 +13,8 @@ public class Test10_MultipleInheritanceInterfaces {
 
     @Test
     public void testSingleInheritanceInterfaces() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(I1.class);
         Map<String, String> expected = Map.of(
@@ -25,7 +26,8 @@ public class Test10_MultipleInheritanceInterfaces {
 
     @Test
     public void testSingleInheritanceInstance() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(new B());
         Map<String, String> expected = Map.of(
@@ -38,7 +40,8 @@ public class Test10_MultipleInheritanceInterfaces {
 
     @Test
     public void testMultipleInheritanceInterfaces() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(A.class);
         Map<String, String> expected = Map.of(
@@ -53,7 +56,8 @@ public class Test10_MultipleInheritanceInterfaces {
 
     @Test
     public void testMultipleInheritanceInstance() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Map<String, String> result = inspector.describeObject(new A());
         Map<String, String> expected = Map.of(

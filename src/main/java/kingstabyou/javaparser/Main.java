@@ -75,6 +75,10 @@ public class Main {
         return getExplainer().explain(this.classes, receiverType, methodName, argumentTypes);
     }
 
+    public Map<String, String> describeObject(Object o) {
+        return getInspector().describeObject(o);
+    }
+
     public void parseFull(){
         for (Map.Entry<String, ClassOrInterfaceDeclaration> c: this.classes.entrySet()){
             Map<String, ClassOrInterfaceDeclaration> tempclasses=new HashMap<>(classes);

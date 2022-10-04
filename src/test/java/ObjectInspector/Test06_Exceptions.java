@@ -14,7 +14,8 @@ public class Test06_Exceptions {
 
     @Test
     public void testException() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         {
             B obj = new B();
@@ -38,7 +39,8 @@ public class Test06_Exceptions {
 
     @Test
     public void testError() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         {
             B obj = new B();

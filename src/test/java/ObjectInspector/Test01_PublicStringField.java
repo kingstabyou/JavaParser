@@ -23,7 +23,8 @@ public class Test01_PublicStringField {
 
     @Test
     public void testHasConstString() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         Object obj = new A();
         Map<String, String> result = inspector.describeObject(obj);
@@ -33,8 +34,8 @@ public class Test01_PublicStringField {
 
     @Test
     public void testHasRandomString() {
-        ObjectInspector inspector = Main.getInspector();
-
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         A obj = new A();
 
         String randomString = generateRandomString();

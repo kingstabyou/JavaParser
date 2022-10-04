@@ -13,8 +13,8 @@ public class Test03_ToStringNullPrimitives {
 
     @Test
     public void testToString() {
-        ObjectInspector inspector = Main.getInspector();
-
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         C obj = new C();
         Map<String, String> result = inspector.describeObject(obj);
 
@@ -24,7 +24,8 @@ public class Test03_ToStringNullPrimitives {
 
     @Test
     public void testPrimitives() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         for (int count = 0 ; count < 1_000 ; count++) {
@@ -65,7 +66,8 @@ public class Test03_ToStringNullPrimitives {
 
     @Test
     public void testBoxedStaticType() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         for (int count = 0 ; count < 1_000 ; count++) {
@@ -106,7 +108,8 @@ public class Test03_ToStringNullPrimitives {
 
     @Test
     public void testBoxedDynamicType() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         for (int count = 0 ; count < 1_000 ; count++) {
@@ -147,7 +150,8 @@ public class Test03_ToStringNullPrimitives {
 
     @Test
     public void testWeirdBoxed() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         HasBoxedFields obj = new HasBoxedFields();
@@ -186,7 +190,8 @@ public class Test03_ToStringNullPrimitives {
 
     @Test
     public void testNull() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
 

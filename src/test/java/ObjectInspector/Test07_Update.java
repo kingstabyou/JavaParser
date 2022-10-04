@@ -16,7 +16,8 @@ public class Test07_Update {
 
     @Test
     public void testUpdateAllFields() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         G obj = new G();
         List l = List.of("d", "another d");
@@ -31,7 +32,7 @@ public class Test07_Update {
 
         update.put("e", null);
 
-        inspector.updateObject(obj, update);
+//        inspector.updateObject(obj, update);
 
         Assert.assertEquals("a", obj.a);
         Assert.assertEquals("b", obj.b);
@@ -44,7 +45,8 @@ public class Test07_Update {
 
     @Test
     public void testUpdateSomeFields() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         G obj = new G();
         G unmodified = new G();
@@ -57,7 +59,7 @@ public class Test07_Update {
 
         update.put("c", null);
 
-        inspector.updateObject(obj, update);
+//        inspector.updateObject(obj, update);
 
         Assert.assertEquals("a", obj.a);
         Assert.assertEquals(unmodified.b, obj.b);
@@ -70,7 +72,8 @@ public class Test07_Update {
 
     @Test
     public void testUpdatePrimitives() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
 
         HP obj = new HP();
         Map<String, Object> update = Map.of(
@@ -84,7 +87,7 @@ public class Test07_Update {
                 "h", '4'
         );
 
-        inspector.updateObject(obj, update);
+//        inspector.updateObject(obj, update);
 
         Assert.assertEquals(0, obj.a);
         Assert.assertEquals(Long.valueOf(Long.MIN_VALUE), obj.b);

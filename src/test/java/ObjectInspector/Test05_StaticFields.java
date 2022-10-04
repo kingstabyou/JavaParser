@@ -13,7 +13,8 @@ public class Test05_StaticFields {
 
     @Test
     public void testStaticFields() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         for (int count = 0 ; count < 1_000 ; count++) {
@@ -73,7 +74,8 @@ public class Test05_StaticFields {
 
     @Test
     public void testStaticAndInstanceFields() {
-        ObjectInspector inspector = Main.getInspector();
+//        ObjectInspector inspector = Main.getInspector();
+        Main inspector = new Main();
         Random r = new Random();
 
         for (int count = 0 ; count < 1_000 ; count++) {
